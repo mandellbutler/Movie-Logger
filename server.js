@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const session = require('express-session')
 const exphbs = require('express-handlebars')
+const sequelize = require('./config/connection')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 
 // routes
@@ -25,5 +26,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 // routes
-
-app.listen(PORT, () => console.log(`Now listening on ${PORT}.`))
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}.`))
+})
