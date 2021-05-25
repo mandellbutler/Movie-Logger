@@ -4,28 +4,25 @@ const session = require('express-session')
 const exphbs = require('express-handlebars')
 const sequelize = require('./config/connection')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
-
-// routes
-
-// sequelize connection
-
+const routes = require('./routes')
 // helpers
 
 const app = express()
 const PORT = process.env.PORT || 3001
 
-// sessions
-
+// HANDLEBARS
 const hbs = exphbs.create()
-
 app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
 
+// MIDDLEWARE
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-// routes
+// ROUTES
+app.use(routes)
+
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}.`))
 })
