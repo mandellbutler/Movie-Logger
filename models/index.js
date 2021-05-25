@@ -3,19 +3,19 @@ const Movie = require('Movie')
 const Rating = require('Rating')
 
 User.belongsToMany(Movie, {
-	through: {
-		model:	Rating,
-		unique: false
-	},
-	as: 'completed_ratings'
+  through: {
+    model: Rating,
+    unique: false
+  },
+  as: 'completed_ratings'
 })
 
 Movie.belongsToMany(User, {
-	through: {
-		model: Rating,
-		unique: false
-	},
-	as: 'movie_rating'
+  through: {
+    model: Rating,
+    unique: false
+  },
+  as: 'movie_rating'
 })
 
-module.exports = { User, Rating, Movie };
+module.exports = { User, Rating, Movie }
