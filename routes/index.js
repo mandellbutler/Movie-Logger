@@ -6,7 +6,7 @@ router.use('/api', apiRoutes)
 
 // index route
 router.use('/', (req, res) => {
-  res.json('hello world')
+  res.render('homepage')
 })
 
 module.exports = router
