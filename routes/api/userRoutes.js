@@ -1,7 +1,7 @@
 /* eslint-disable no-tabs */
 const bcrypt = require('bcrypt')
 const router = require('express').Router()
-const { User } = require('./models')
+const User = require('../../models/User') // TODO: write models index.js
 
 // GET ALL USERS
 router.get('/', async (req, res) => {
@@ -57,3 +57,5 @@ router.post('/login', async (req, res) => {
     res.status(500).json(err)
   }
 })
+
+module.exports = router
