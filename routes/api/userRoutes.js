@@ -1,5 +1,4 @@
 /* eslint-disable no-tabs */
-const bcrypt = require('bcrypt')
 const router = require('express').Router()
 const User = require('../../models/User') // TODO: write models index.js
 
