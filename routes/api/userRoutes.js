@@ -1,6 +1,6 @@
 /* eslint-disable no-tabs */
 const router = require('express').Router()
-const User = require('../../models/User') // TODO: write models index.js
+const { User } = require('../../models/User') // TODO: write models index.js
 
 // GET ALL USERS
 router.get('/', async (req, res) => {
