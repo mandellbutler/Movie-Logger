@@ -1,6 +1,6 @@
-const User = require('User');
-const Movie = require('Movie');
-const Rating = require('Rating');
+const User = require('./User');
+const Movie = require('./Movie');
+const Rating = require('./Rating');
 
 User.belongsToMany(Movie, {
   through: {
