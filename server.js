@@ -5,10 +5,24 @@ const exphbs = require('express-handlebars')
 const sequelize = require('./config/connection')
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const routes = require('./routes')
-// helpers
 
 const app = express()
 const PORT = process.env.PORT || 3001
+
+// SESSION
+const sess = {
+  secret: process.env.SESS_SECRET || 'secret code',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+}
+
+app.use(session(sess))
+
+// HELPERS?
 
 // HANDLEBARS
 const hbs = exphbs.create()
