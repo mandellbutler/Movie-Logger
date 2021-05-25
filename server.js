@@ -1,26 +1,28 @@
-//DEPENDENCIES
-var express = require('express');
-var exphbs  = require('express-handlebars');
+const path = require('path')
+const express = require('express')
+const session = require('express-session')
+const exphbs = require('express-handlebars')
+const sequelize = require('./config/connection')
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
+const routes = require('./routes')
+// helpers
 
-var app = express();
-const PORT = process.env.PORT || 3001; //Decide on port number??
+const app = express()
+const PORT = process.env.PORT || 3001
 
-const sequelize = require('./config/connection');
+// HANDLEBARS
+const hbs = exphbs.create()
+app.engine('handlebars', hbs.engine)
+app.set('view engine', 'handlebars')
 
-const hbs = exphbs.create({});
+// MIDDLEWARE
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static(path.join(__dirname, 'public')))
 
-
-//Handlebar midware
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
-
-//Need to add listener
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(require('./controllers/'));
+// ROUTES
+app.use(routes)
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}.`))
+})
