@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const router = require('express').Router(); 
-const { User, Rating, Movie } = require(./models);
+const { User } = require('./models');
 
 router.get('/', async (req, res) => {
 	try {
@@ -29,14 +29,17 @@ router.post('/login', async (req, res) => {
 		if (!validPassword) {
 			res
 				.status(400)
-				.json({ message: 'Incorrect email or password.'});
+				.json({ message: 'Incorrect email or password.' });
 			return;	
 		}
 		req.session.save(() => {
-			req.session.loggedIn = true
+			req.session.loggedIn = true;
 			res
 				.status(200)
-				.json({ user: })
-		})
+				.json({ user: userData, message: 'Login successful!' });
+		});
+	} catch (err) {
+	  console.log(err);
+	  res.status(500).json(err);
 	}
-})
+});
