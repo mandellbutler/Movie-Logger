@@ -18,4 +18,4 @@ Movie.belongsToMany(User, {
 	as: 'movie_rating'
 })
 
-
+module.exports = { User, Rating, Movie };
