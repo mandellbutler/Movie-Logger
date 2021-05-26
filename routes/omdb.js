@@ -32,12 +32,17 @@ router.get('/search/title', async (req, res) => {
 
 // search by title
 // get title's imdb id
+
 // check if movie is already in database by ID as movie pk
 // if it is,
 // return the values
+
 // if not,
 // fetch from web api
 // put it into our own database
+// and return the values
+
+
 
 module.exports = router;
 

@@ -38,14 +38,12 @@ User.init(
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       }
-    }
-  },
-  {
+    },
     sequelize,
     timestamps: true,
     freezeTablename: false,
     underscored: true,
-    modelName: 'user',
+    modelName: 'user'
   }
 );
 
