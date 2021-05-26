@@ -22,7 +22,7 @@ router.get('/search/imdb', async (req, res) => {
 // search by title
 router.get('/search/title', async (req, res) => {
   const search = req.body.search;
-  const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+  const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie`;
   try {
     const movieData = await axios.get(baseSearchByTitleUrl);
     const data = await movieData.data;
@@ -41,7 +41,7 @@ router.get('/search', async (req, res) => {
 
     // get title's imdb id
     const { imdbID } = await movieData.data.Search[0];
-    const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
+    const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}&type=movie`;
 
     // check if movie is already in database by ID as movie pk
     const databaseData = await Movie.findByPk(imdbID);
@@ -50,21 +50,7 @@ router.get('/search', async (req, res) => {
     if (databaseData) {
       // return the values
       res.json(databaseData);
-    } else { // if not,
-      // // fetch from web api
-      // const newMovieData = await axios.get(baseSearchByIdUrl);
-      // const data = await newMovieData.data;
-
-      // // put it into our own database
-      // const { Title, Released, Director, Actors/* , Ratings, Plot, Poster */ } = data;
-      // const newMovie = await Movie.create({
-      //   id: imdbID,
-      //   movie_title: Title,
-      //   release_date: Released,
-      //   director: Director,
-      //   actors: Actors,
-      //   avg_rating: 5
-      // });
+    } else {
       const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
       if (newMovie) {
         // and return the values
