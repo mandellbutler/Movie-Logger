@@ -1,4 +1,4 @@
-const { Movie } = require('../models')
+const { Movie } = require('../models');
 
 const movieData = [
   {
@@ -22,8 +22,8 @@ const movieData = [
     actors: 'Salma Hayek',
     avg_rating: 4
   }
-]
+];
 
-const seedMovie = () => Movie.bulkCreate(movieData)
+const seedMovie = () => Movie.bulkCreate(movieData);
 
-module.exports = seedMovie
+module.exports = seedMovie;
