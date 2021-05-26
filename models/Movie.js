@@ -34,7 +34,7 @@ Movie.init({
     timestamps: true,
     freezeTablename: false,
     underscored: true,
-    modelName: 'movie'	
+    modelName: 'movie'
 })
 
-module.exports = Movie
+module.exports = Movie;
