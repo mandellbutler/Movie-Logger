@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const axios = require('axios');
 const { Movie } = require('../models');
+const { getAndCreateMovieData } = require('../utils/routeHelpers');
 require('dotenv').config();
 
 const apiKey = process.env.OMDB_APIKEY;
@@ -50,21 +51,23 @@ router.get('/search', async (req, res) => {
       // return the values
       res.json(databaseData);
     } else { // if not,
-      // fetch from web api
-      const newMovieData = await axios.get(baseSearchByIdUrl);
-      const data = await newMovieData.data;
+      // // fetch from web api
+      // const newMovieData = await axios.get(baseSearchByIdUrl);
+      // const data = await newMovieData.data;
 
-      // put it into our own database
-      const { Title, Released, Director, Actors/* , Ratings, Plot, Poster */ } = data;
-      const newMovie = await Movie.create({
-        id: imdbID,
-        movie_title: Title,
-        release_date: Released,
-        director: Director,
-        actors: Actors,
-        avg_rating: 5
-      });
+      // // put it into our own database
+      // const { Title, Released, Director, Actors/* , Ratings, Plot, Poster */ } = data;
+      // const newMovie = await Movie.create({
+      //   id: imdbID,
+      //   movie_title: Title,
+      //   release_date: Released,
+      //   director: Director,
+      //   actors: Actors,
+      //   avg_rating: 5
+      // });
+      const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
       if (newMovie) {
+        // and return the values
         res.json(newMovie);
       }
     }
@@ -78,7 +81,6 @@ router.get('/search', async (req, res) => {
 
 
 
-// and return the values
 
 
 
