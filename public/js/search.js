@@ -6,9 +6,11 @@ const searchHandler = async (e) => {
     await fetch('/omdb/search', {
       method: 'GET',
       body: JSON.stringify({ search: searchTerm }),
-      header: { 'Content-Type': 'application/json' }
+      header: { 'Content-Type': 'application/json' },
     });
   }
 };
 
-document.querySelector('#search-button').addEventListener('click', searchHandler);
+document
+  .querySelector('#search-button')
+  .addEventListener('click', searchHandler);
