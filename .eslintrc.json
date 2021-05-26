@@ -8,7 +8,7 @@
   },
   "parserOptions": {
     "ecmaVersion": 8
-  },
+   },
   "rules": {
     "no-duplicate-case": "error",
     "no-empty": "error",
