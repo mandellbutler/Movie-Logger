@@ -20,13 +20,13 @@ router.get('/search/imdb', async (req, res) => {
 });
 
 // search by title
-router.get('/search/title', async (req, res) => {
-  const search = req.body.search;
+router.post('/search/title', async (req, res) => {
+  const search = req.body;
+  console.log(search);
   const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie`;
   try {
     const movieData = await axios.get(baseSearchByTitleUrl);
     const data = await movieData.data.Search;
-    console.log(data);
     res.render('search', { movie: data });
   } catch (err) {
     res.status(500).json(err);

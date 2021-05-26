@@ -1,16 +1,16 @@
 const searchHandler = async (e) => {
   e.preventDefault();
-  const searchTerm = document.querySelector('#search-button').value.trim();
-
-  if (searchTerm) {
-    await fetch('/omdb/search', {
-      method: 'GET',
-      body: JSON.stringify({ search: searchTerm }),
+  const search = document.querySelector('#input-search').value.trim();
+  console.log(search);
+  if (search) {
+    await fetch('/omdb/search/title', {
+      method: 'POST',
+      body: JSON.stringify({ search }),
       header: { 'Content-Type': 'application/json' },
     });
   }
 };
 
 document
-  .querySelector('#search-button')
-  .addEventListener('click', searchHandler);
+  .querySelector('#search-form')
+  .addEventListener('submit', searchHandler);
