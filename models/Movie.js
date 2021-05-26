@@ -31,6 +31,8 @@ Movie.init({
     type: DataTypes.INTEGER,
     allowNull: false
   },
+},
+{
   sequelize,
   timestamps: true,
   freezeTablename: false,
