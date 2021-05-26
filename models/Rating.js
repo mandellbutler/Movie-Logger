@@ -30,6 +30,8 @@ Rating.init({
       key: 'id'
     }
   },
+},
+{
   sequelize,
   timestamps: true,
   freezeTablename: false,
