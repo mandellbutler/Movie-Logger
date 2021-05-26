@@ -4,6 +4,7 @@ const sequelize = require('../config/connection')
 class Movie extends Model {}
 
 Movie.init({
+
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
