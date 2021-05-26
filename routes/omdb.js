@@ -55,7 +55,7 @@ router.get('/search', async (req, res) => {
       const data = await newMovieData.data;
 
       // put it into our own database
-      const { Title, Released, Director, Actors, Ratings, Plot, Poster } = data;
+      const { Title, Released, Director, Actors/*Ratings, Plot, Poster*/} = data;
       const newMovie = await Movie.create({
         id: imdbID,
         movie_title: Title,
@@ -64,7 +64,7 @@ router.get('/search', async (req, res) => {
         actors: Actors,
         avg_rating: 5
       });
-      if (newMovie[0]) {
+      if (newMovie) {
         res.json(newMovie);
       }
     }
