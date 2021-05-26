@@ -1,9 +1,15 @@
-const router = require('express').Router()
+const sequelize = require('../config/connection')
+const seedMovie = require('./movie-seeds')
+const seedUser = require('./user-seeds')
 
-const apiRoutes = require('./api')
-const homeRoutes = require('./home-routes.js')
+const seedAll = async () => {
+  await sequelize.sync({ force: true })
 
-router.use('/', homeRoutes)
-router.use('/api', apiRoutes)
+  await seedMovie()
 
-module.exports = router;
+  await seedUser()
+
+  process.exit(0)
+}
+
+seedAll()
