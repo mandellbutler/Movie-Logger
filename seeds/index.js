@@ -4,15 +4,15 @@ const seedUser = require('./user-seeds')
 const seedRating = require('./rating-seeds')
 
 const seedAll = async () => {
-  await sequelize.sync({ force: true })
+  await sequelize.sync({ force: true });
 
-  await seedMovie()
+  await seedMovie();
 
-  await seedUser()
+  await seedUser();
 
   await seedRating()
 
   process.exit(0)
 }
 
-seedAll()
+seedAll();
