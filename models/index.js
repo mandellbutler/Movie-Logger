@@ -3,6 +3,7 @@ const Movie = require('./Movie')
 const Rating = require('./Rating')
 
 User.belongsToMany(Movie, {
+  foreignKey: 'user_id',
   through: {
     model: Rating,
     unique: false
