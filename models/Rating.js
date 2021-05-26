@@ -8,9 +8,11 @@ Rating.init({
 		type: DataTypes.INTEGER,
 		allowNull: false,
 		primaryKey: true,
-		autoIncrement: true
+		autoIncrement: true,
+		foreignKey: 'movie_id',
+		foreignKey: 'user_id'
 	  },
-	rating_score: {
+	user_rating: {
 		type: DataTypes.INTEGER,
 		allowNull: false
 	},
