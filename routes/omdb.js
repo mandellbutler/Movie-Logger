@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
+const { Movie } = require('../models');
 require('dotenv').config();
 
 const apiKey = process.env.OMDB_APIKEY;
@@ -30,16 +31,53 @@ router.get('/search/title', async (req, res) => {
   }
 });
 
-// search by title
-// get title's imdb id
+router.get('/search', async (req, res) => {
+  // search by title
+  const search = req.body.search;
+  const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+  try {
+    const movieData = await axios.get(baseSearchByTitleUrl);
 
-// check if movie is already in database by ID as movie pk
-// if it is,
-// return the values
+    // get title's imdb id
+    const { imdbID } = await movieData.data.Search[0];
+    const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
 
-// if not,
-// fetch from web api
-// put it into our own database
+    // check if movie is already in database by ID as movie pk
+    const databaseData = await Movie.findByPk(imdbID);
+
+    // if it is,
+    if (databaseData) {
+      // return the values
+      res.json(databaseData);
+    } else { // if not,
+      // fetch from web api
+      const newMovieData = await axios.get(baseSearchByIdUrl);
+      const data = await newMovieData.data;
+
+      // put it into our own database
+      const { Title, Released, Director, Actors, Ratings, Plot, Poster } = data;
+      const newMovie = await Movie.create({
+        id: imdbID,
+        movie_title: Title,
+        release_date: Released,
+        director: Director,
+        actors: Actors,
+        avg_rating: 5
+      });
+      if (newMovie[0]) {
+        res.json(newMovie);
+      }
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
+
 // and return the values
 
 
