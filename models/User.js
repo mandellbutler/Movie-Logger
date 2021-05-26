@@ -39,6 +39,8 @@ User.init(
         return newUserData
       }
     },
+  },
+  {
     sequelize,
     timestamps: true,
     freezeTablename: false,
