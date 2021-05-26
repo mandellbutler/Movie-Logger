@@ -13,7 +13,7 @@ const ratingdata = [
   },
   {
     user_rating: 3,
-    movie_id: 4,
+    movie_id: 3,
     user_id: 3,
   },
   {
@@ -23,7 +23,7 @@ const ratingdata = [
   },
   {
     user_rating: 1,
-    movie_id: 4,
+    movie_id: 3,
     user_id: 3,
   },
 ];
