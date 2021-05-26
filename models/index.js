@@ -1,14 +1,15 @@
-const User = require('./User')
-const Movie = require('./Movie')
-const Rating = require('./Rating')
+const User = require('./User');
+const Movie = require('./Movie');
+const Rating = require('./Rating');
 
 User.belongsToMany(Movie, {
+  foreignKey: 'user_id',
   through: {
     model: Rating,
     unique: false
   },
   as: 'completed_ratings'
-})
+});
 
 Movie.belongsToMany(User, {
   through: {
@@ -16,6 +17,6 @@ Movie.belongsToMany(User, {
     unique: false
   },
   as: 'movie_rating'
-})
+});
 
-module.exports = { User, Rating, Movie }
+module.exports = { User, Rating, Movie };
