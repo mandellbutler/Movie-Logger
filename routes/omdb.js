@@ -5,14 +5,14 @@ require('dotenv').config();
 const apiKey = process.env.OMDB_APIKEY;
 
 router.get('/search', async (req, res) => {
-  const search = req.body.search;
-  const baseSearchUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
-  const testUrl = `http://www.omdbapi.com/?apikey=${apiKey}&?i=tt0111161&plot=full`;
+  // const search = req.body.search;
+  const imdbID = 'tt0126029';
+  // const baseSearchUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+  const testUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
   try {
     const movieData = await axios.get(testUrl);
-    const testData = movieData;
-    const data = movieData.data.Search[0];
-    res.json(testData);
+    const data = await movieData.data;
+    res.json(data);
   } catch (err) {
     res.status(500).json(err);
   }
