@@ -8,7 +8,7 @@ User.belongsToMany(Movie, {
     unique: false
   },
   as: 'completed_ratings'
-})
+});
 
 Movie.belongsToMany(User, {
   through: {
@@ -16,6 +16,6 @@ Movie.belongsToMany(User, {
     unique: false
   },
   as: 'movie_rating'
-})
+});
 
-module.exports = { User, Rating, Movie }
+module.exports = { User, Rating, Movie };
