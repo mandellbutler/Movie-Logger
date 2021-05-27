@@ -7,7 +7,7 @@ require('dotenv').config();
 const apiKey = process.env.OMDB_APIKEY;
 
 // search by movie imdbID
-router.get('/search/imdb', async (req, res) => {
+router.get('/search/id/:id', async (req, res) => {
   const imdbID = 'tt0126029';
   const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
   try {
@@ -20,22 +20,21 @@ router.get('/search/imdb', async (req, res) => {
 });
 
 // search by title
-router.post('/search/title', async (req, res) => {
-  let search = await req.body.search;
+router.get('/search/:search', async (req, res) => {
+  const search = await req.params.search;
   const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie`;
   try {
     const movieData = await axios.get(baseSearchByTitleUrl);
     const data = await movieData.data.Search;
-    console.log(data[0]);
-    res.render('search', { movie: data });
+    res.render('search', { movies: data });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/search', async (req, res) => {
+router.get('/search/id/:id', async (req, res) => {
   // search by title
-  const search = req.body.search;
+  const search = req.query.id;
   const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
   try {
     const movieData = await axios.get(baseSearchByTitleUrl);
