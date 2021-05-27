@@ -4,7 +4,7 @@ const homeRoutes = require('./home-routes');
 const omdbRoutes = require('./omdb');
 
 // omdb routes
-router.use('/omdb', omdbRoutes);
+router.use('/search', omdbRoutes);
 
 // api routes
 router.use('/api', apiRoutes);
