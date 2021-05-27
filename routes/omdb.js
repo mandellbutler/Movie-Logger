@@ -15,7 +15,7 @@ router.get('/:search', async (req, res) => {
   try {
     const movieData = await axios.get(baseSearchByTitleUrl);
     const data = await movieData.data.Search;
-    res.render('search', { movies: data });
+    res.render('search', { movies: data, loggedIn: req.session.loggedIn });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -42,7 +42,7 @@ router.get('/id/:id', async (req, res) => {
         const movie = await newMovie.get({ plain: true });
         if (movie) {
         // pass the newMovie data into the template renderer
-          res.render('movie', { movie: movie });
+          res.render('movie', { movie: movie, loggedIn: req.session.loggedIn });
         } else {
           res.status(404).json('movie not found');
         }
