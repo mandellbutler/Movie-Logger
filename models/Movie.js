@@ -20,16 +20,33 @@ Movie.init({
   },
   director: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   actors: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
   avg_rating: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
   },
+  movie_plot: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  movie_poster: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  genre: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+  writers: {
+    type: DataTypes.STRING,
+    allowNull: true
+  },
+
 },
 {
   sequelize,
