@@ -1,18 +1,18 @@
 <div class="card">
   <div class="card-header">
     <div class="card-title">
-      <a href="/movie/{{imdbID}}">{{Title}}</a>
+      <a href="/search/id/{{id}}">{{movie_title}}</a>
     </div>
     <div class="card-subtitle">
-      {{Year}}
+      {{release_date}}
     </div>
   </div>
   <div class="card-body">
-    {{#if Poster}}
-    <img src="{{Poster}}">
+    {{#if movie_poster}}
+    <img src="{{movie_poster}}">
     {{/if}}
-    <h6>Director: {{Director}}</h6>
-    <h6>Actors: {{Actors}}</h6>
+    <h6>Director: {{director}}</h6>
+    <h6>Actors: {{actors}}</h6>
   </div>
   <div class="card-footer">
     <a href="#"></a>

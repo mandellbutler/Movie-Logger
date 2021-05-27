@@ -7,17 +7,17 @@ require('dotenv').config();
 const apiKey = process.env.OMDB_APIKEY;
 
 // search by movie imdbID
-router.get('/id/:id', async (req, res) => {
-  const imdbID = 'tt0126029';
-  const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
-  try {
-    const movieData = await axios.get(baseSearchByIdUrl);
-    const data = await movieData.data;
-    res.json(data);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get('/id/:id', async (req, res) => {
+//   const imdbID = 'tt0126029';
+//   const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
+//   try {
+//     const movieData = await axios.get(baseSearchByIdUrl);
+//     const data = await movieData.data;
+//     res.json(data);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // search by title
 router.get('/:search', async (req, res) => {
@@ -32,31 +32,28 @@ router.get('/:search', async (req, res) => {
   }
 });
 
-router.get('api/id/:id', async (req, res) => {
-  // search by title
-  const search = req.query.id;
-  const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+router.get('/id/:id', async (req, res) => {
+  const id = await req.params.id;
   try {
-    const movieData = await axios.get(baseSearchByTitleUrl);
-
-    // get title's imdb id
-    const { imdbID } = await movieData.data.Search[0];
-    const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}&type=movie`;
-
     // check if movie is already in database by ID as movie pk
-    const databaseData = await Movie.findByPk(imdbID);
-
-    // if it is,
+    const databaseData = await Movie.findByPk(id);
     if (databaseData) {
       // return the values
-      res.json(databaseData);
+      const data = databaseData.get({ plain: true });
+      res.render('movie', { movie: data });
     } else {
-      const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
-      if (newMovie) {
+      const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
+      try {
+        const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
+        const movie = await newMovie.get({ plain: true });
+        if (movie) {
         // and return the values
-        res.json(newMovie);
-      } else {
-        res.status(404).json('movie not found');
+          res.render('movie', { movie: movie });
+        } else {
+          res.status(404).json('movie not found');
+        }
+      } catch (err) {
+        res.json(err);
       }
     }
   } catch (err) {
