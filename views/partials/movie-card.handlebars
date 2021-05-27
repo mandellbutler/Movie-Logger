@@ -1,43 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="poster-container col-4">
-      <div class="postercard-body">
-        {{#if (isNotNA Poster)}}
-        <img src="{{Poster}}">
-        {{/if}}
-      </div>
-      <div class="poster-footer">
-        <a href="#"></a>
-      </div>
-    </div>
-    <div class="description-container col-8">
-      <div class="row">
-        <div class="card-header">
-          <div class="card-title row row-col-2">
-            <a href="/search/id/{{imdbID}}">{{Title}}</a>
-            <form id="user-rating-form" data-id="{{imdbID}}">
-              <span class="user-rating">
-                <input class="rating-selection" type="radio" name="rating" value="5"><span class="star"></span>
-
-                <input class="rating-selection" type="radio" name="rating" value="4"><span class="star"></span>
-
-                <input class="rating-selection" type="radio" name="rating" value="3"><span class="star"></span>
-
-                <input class="rating-selection" type="radio" name="rating" value="2"><span class="star"></span>
-
-                <input class="rating-selection" type="radio" name="rating" value="1"><span class="star"></span>
-              </span>
-            </form>
+    <div class="card col col-12 border-0">
+      <div class="card-body">
+        <div class="row">
+          <div class="col col-12 col-lg-2 col-sm-12 col-md-2">
+            {{#if (isNotNA Poster)}}
+              <a class="card-title" href="/search/id/{{imdbID}}">
+                <img class="poster" src="{{Poster}}" />
+              </a>
+            {{/if}}
           </div>
-          <div class="card-subtitle">
-            {{Year}}
+          <div class="col col-12 col-lg-10 col-sm-12 col-md-10">
+            <div class="card-header">
+              <a class="card-title" href="/search/id/{{imdbID}}"><h3
+                >{{Title}}</h3></a>
+              <div class="card-subtitle">
+                {{Year}}
+              </div>
+              <p>
+                {{Plot}}
+              </p>
+            </div>
           </div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia,
-            voluptate! Animi voluptas consectetur inventore facilis quaerat
-            porro possimus, deleniti, officia sit esse aspernatur! Quia ab ea
-            maiores quis repellendus quos?
-          </p>
         </div>
       </div>
     </div>

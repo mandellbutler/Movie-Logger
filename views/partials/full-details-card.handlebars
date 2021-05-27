@@ -1,15 +1,55 @@
 <div class="card">
   <div class="card-header">
     <div class="card-title">
-      <a href="/search/id/{{id}}">{{movie_title}}</a>
+      <a href="/search/id/{{id}}"><h3>{{movie_title}}</h3></a>
     </div>
     <div class="card-subtitle">
-      {{release_date}}
+      {{getDate release_date}}
+    </div>
+    <div class="card-subtitle">
+      <form id="user-rating-form" data-id="{{imdbID}}">
+        <span class="user-rating p-3">
+          <input
+            class="rating-selection"
+            type="radio"
+            name="rating"
+            value="5"
+          /><span class="star"></span>
+
+          <input
+            class="rating-selection"
+            type="radio"
+            name="rating"
+            value="4"
+          /><span class="star"></span>
+
+          <input
+            class="rating-selection"
+            type="radio"
+            name="rating"
+            value="3"
+          /><span class="star"></span>
+
+          <input
+            class="rating-selection"
+            type="radio"
+            name="rating"
+            value="2"
+          /><span class="star"></span>
+
+          <input
+            class="rating-selection"
+            type="radio"
+            name="rating"
+            value="1"
+          /><span class="star"></span>
+        </span>
+      </form>
     </div>
   </div>
   <div class="card-body">
     {{#if movie_poster}}
-    <img src="{{movie_poster}}">
+      <img src="{{movie_poster}}" />
     {{/if}}
     <h6>Director: {{director}}</h6>
     <h6>Writers: {{writers}}</h6>
