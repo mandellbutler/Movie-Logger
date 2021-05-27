@@ -1,25 +1,27 @@
-<div class="row">
-  {{#each movies as |movie|}}
-    <div class="col col-3">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">
-            <a href="/search/id/{{id}}">{{movie_title}}</a>
+<div class="container py-3">
+  <div class="row g-2">
+    {{#each movies as |movie|}}
+      <div class="col col-4">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">
+              <a href="/search/id/{{id}}"><h3>{{movie_title}}</h3></a>
+            </div>
+            <div class="card-subtitle">
+              {{getDate release_date}}
+            </div>
+            <h6>Your Rating: {{Rating.user_rating}}</h6>
           </div>
-          <div class="card-subtitle">
-            {{release_date}}
+          <div class="card-body">
+            {{#if movie_poster}}
+              <img class="poster" src="{{movie_poster}}" />
+            {{/if}}
           </div>
-        </div>
-        <div class="card-body">
-          {{#if movie_poster}}
-            <img src="{{movie_poster}}" />
-          {{/if}}
-          <h6>Your Rating: {{Rating.user_rating}}</h6>
-        </div>
-        <div class="card-footer">
-          <a href="#"></a>
+          <div class="card-footer">
+            <a href="#"></a>
+          </div>
         </div>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </div>
