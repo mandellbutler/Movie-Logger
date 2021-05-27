@@ -46,7 +46,6 @@ Movie.init({
     type: DataTypes.STRING,
     allowNull: true
   },
-
 },
 {
   sequelize,
