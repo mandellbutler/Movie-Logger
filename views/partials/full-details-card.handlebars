@@ -1,14 +1,16 @@
-<div class="card">
-  <div class="card-header">
+<div class="card border-0 rounded-0">
+  <div class="card-header border-0">
     <div class="card-title">
       <a href="/search/id/{{id}}"><h3>{{movie_title}}</h3></a>
     </div>
     <div class="card-subtitle">
-      {{getDate release_date}}
+      <h4>{{getDate release_date}}</h4>
     </div>
     <div class="card-subtitle">
       <form id="user-rating-form" data-id="{{id}}">
-        <span class="user-rating p-3">
+        <span class="">Rate It</span>
+
+        <span class="user-rating px-3 py-0">
           <input
             class="rating-selection"
             type="radio"
@@ -47,17 +49,45 @@
       </form>
     </div>
   </div>
-  <div class="card-body">
-    {{#if movie_poster}}
-      <img src="{{movie_poster}}" />
-    {{/if}}
-    <h6>Director: {{director}}</h6>
-    <h6>Writers: {{writers}}</h6>
-    <h6>Actors: {{actors}}</h6>
-    <h6>Genre: {{genre}}</h6>
-    <h6>Plot: {{movie_plot}}</h6>
-  </div>
-  <div class="card-footer">
-    <a href="#"></a>
+  <div class="card-body row">
+    <div class="col col-12 col-md-6 col-lg-3">
+      {{#if movie_poster}}
+        <img class="poster" src="{{movie_poster}}" />
+      {{/if}}
+    </div>
+    <div class="col col-12 col-md-6 col-lg-9">
+      <div class="list-group">
+        <div class="list-group-item border-0 py-2"></a>
+          <div class="list-group-itemd-flex w-100 justify-content-between">
+            <h5 class="mb-1">Director</h5>
+          </div>
+          <p class="mb-1">{{director}}</p>
+        </div>
+        <div class="list-group-item border-0 py-2">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Writer</h5>
+          </div>
+          <p class="mb-1">{{writers}}</p>
+        </div>
+        <div class="list-group-item border-0 py-2">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Genre</h5>
+          </div>
+          <p class="mb-1">{{genre}}</p>
+        </div>
+        <div class="list-group-item border-0 py-2">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Actors</h5>
+          </div>
+          <p class="mb-1">{{actors}}</p>
+        </div>
+        <div class="list-group-item border-0 py-2">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Synopsis</h5>
+          </div>
+          <p class="mb-1">{{movie_plot}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
