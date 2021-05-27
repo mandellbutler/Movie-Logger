@@ -1,16 +1,56 @@
-<div class="card">
-  <div class="card-header">
-    <div class="card-title">
-      <a href="/search/id/{{imdbID}}">{{Title}}</a>
+<div class="container">
+  <div class="row">
+    <div class="poster-container col-4">
+      <div class="postercard-body">
+        <img src="{{Poster}}" />
+      </div>
+      <div class="poster-footer">
+        <a href="#"></a>
+      </div>
     </div>
-    <div class="card-subtitle">
-      {{Year}}
+    <div class="description-container col-8">
+      <div class="row">
+        <div class="card-header">
+          <div class="card-title row row-col-2">
+            <a href="/search/id/{{imdbID}}">{{Title}}</a>
+            <a href="##"><form id="user-rating-form">
+                <span class="user-rating">
+                  <input type="radio" name="rating" value="5" /><span
+                    class="star"
+                  ></span>
+
+                  <input type="radio" name="rating" value="4" /><span
+                    class="star"
+                  ></span>
+
+                  <input type="radio" name="rating" value="3" /><span
+                    class="star"
+                  ></span>
+
+                  <input type="radio" name="rating" value="2" /><span
+                    class="star"
+                  ></span>
+
+                  <input type="radio" name="rating" value="1" /><span
+                    class="star"
+                  ></span>
+                </span>
+              </form>
+              <p style="margin-left: 20px">You have selected
+                <span id="selected-rating" class="selected-rating">0</span>
+                stars.</p></a>
+          </div>
+          <div class="card-subtitle">
+            {{Year}}
+          </div>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia,
+            voluptate! Animi voluptas consectetur inventore facilis quaerat
+            porro possimus, deleniti, officia sit esse aspernatur! Quia ab ea
+            maiores quis repellendus quos?
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="card-body">
-    <img src="{{Poster}}">
-  </div>
-  <div class="card-footer">
-    <a href="#"></a>
   </div>
 </div>
