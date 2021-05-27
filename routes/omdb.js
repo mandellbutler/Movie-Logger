@@ -21,12 +21,12 @@ router.get('/search/imdb', async (req, res) => {
 
 // search by title
 router.post('/search/title', async (req, res) => {
-  const search = req.body;
-  console.log(search);
+  let search = await req.body.search;
   const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie`;
   try {
     const movieData = await axios.get(baseSearchByTitleUrl);
     const data = await movieData.data.Search;
+    console.log(data[0]);
     res.render('search', { movie: data });
   } catch (err) {
     res.status(500).json(err);
@@ -64,14 +64,6 @@ router.get('/search', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-
-
-
-
-
-
 
 module.exports = router;
 
