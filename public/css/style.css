@@ -29,7 +29,7 @@
   margin-left: -15px;
 }
 .user-rating span.star:before {
-  color: #777777;
+  color: rgb(81, 11, 138);
   content:"\f006";
   /*padding-right: 5px;*/
 }
@@ -42,4 +42,14 @@
   color: #ffd100;
   font-weight: bold;
   font-size: 3em;
+}
+
+.navbar {
+  background-color: rgb(81, 11, 138);
+  font-family: 'Limelight', cursive;
+}
+
+#head-text {
+  font-size: xx-large;
+  text-decoration: underline;
 }
