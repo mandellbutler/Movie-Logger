@@ -43,7 +43,7 @@ Movie.init({
     allowNull: true
   },
   writers: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: true
   },
 },
