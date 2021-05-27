@@ -10,18 +10,23 @@ router.post('/:movie_id', async (req, res) => {
   const ratingData = await Rating.findAll({
     where: {
       movie_id: req.params.movie_id,
-      user_id: req.session.user_id
-    }
+      user_id: req.session.user_id,
+    },
   });
   if (ratingData[0]) {
-    console.log('if in db: ' + ratingData);
-    const rating = await Movie.update(req.body, {
-      where: {
-        movie_id: req.params.movie_id,
-        user_id: req.session.user_id
+    const rating = await Rating.update(
+      {
+        user_rating: await req.body.rating,
+      },
+      {
+        where: {
+          movie_id: req.params.movie_id,
+          user_id: req.session.user_id,
+        },
       }
-    });
-    if (rating) {
+    );
+    console.log(rating);
+    if (rating[0]) {
       res.status(200).json('rating updated.');
     } else {
       res.status(500).json('500');
@@ -30,7 +35,7 @@ router.post('/:movie_id', async (req, res) => {
     const newRating = await Rating.create({
       user_rating: req.body.rating,
       movie_id: req.params.movie_id,
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
     });
     console.log('if not in db: ' + newRating);
     if (newRating) {
