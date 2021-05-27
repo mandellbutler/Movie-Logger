@@ -7,16 +7,15 @@ User.belongsToMany(Movie, {
   through: {
     model: Rating,
     unique: false
-  },
-  as: 'completed_ratings'
+  }
 });
 
 Movie.belongsToMany(User, {
+  foreignKey: 'movie_id',
   through: {
     model: Rating,
     unique: false
-  },
-  as: 'movie_rating'
+  }
 });
 
 module.exports = { User, Rating, Movie };
