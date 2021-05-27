@@ -33,25 +33,27 @@ router.get('/:search', async (req, res) => {
 });
 
 router.get('/id/:id', async (req, res) => {
-  // search by title
-  const id = req.params.id;
+  const id = await req.params.id;
   try {
-    const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}&type=movie`;
-
     // check if movie is already in database by ID as movie pk
     const databaseData = await Movie.findByPk(id);
-
-    // if it is,
     if (databaseData) {
       // return the values
-      res.render('movie', { movie: databaseData });
+      const data = databaseData.get({ plain: true });
+      res.render('movie', { movie: data });
     } else {
-      const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
-      if (newMovie) {
+      const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
+      try {
+        const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
+        const movie = await newMovie.get({ plain: true });
+        if (movie) {
         // and return the values
-        res.render('movie', { movie: movie });
-      } else {
-        res.status(404).json('movie not found');
+          res.render('movie', { movie: movie });
+        } else {
+          res.status(404).json('movie not found');
+        }
+      } catch (err) {
+        res.json(err);
       }
     }
   } catch (err) {

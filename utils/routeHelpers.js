@@ -6,14 +6,17 @@ const getAndCreateMovieData = async (url) => {
   const data = await newMovieData.data;
 
   // put it into our own database
-  const { Title, Released, Director, Actors, imdbID/* , Ratings, Plot, Poster */ } = await data;
+  const { Title, Released, Director, Actors, imdbID, Plot, Poster, Genre, Writer } = await data;
   const newMovie = await Movie.create({
     id: imdbID,
     movie_title: Title,
     release_date: Released,
     director: Director,
     actors: Actors,
-    avg_rating: 5
+    movie_plot: Plot,
+    movie_poster: Poster,
+    genre: Genre,
+    writers: Writer
   });
   return newMovie;
 };
