@@ -6,20 +6,9 @@ require('dotenv').config();
 
 const apiKey = process.env.OMDB_APIKEY;
 
-// search by movie imdbID
-// router.get('/id/:id', async (req, res) => {
-//   const imdbID = 'tt0126029';
-//   const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
-//   try {
-//     const movieData = await axios.get(baseSearchByIdUrl);
-//     const data = await movieData.data;
-//     res.json(data);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// search by title
+// search by title for search bar
+// route: search/:search
+// this will return a list of search results on the page
 router.get('/:search', async (req, res) => {
   const search = await req.params.search;
   const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie`;
@@ -32,22 +21,27 @@ router.get('/:search', async (req, res) => {
   }
 });
 
+// search by ID taken from search by title
+// route: search/id/:id
 router.get('/id/:id', async (req, res) => {
   const id = await req.params.id;
   try {
-    // check if movie is already in database by ID as movie pk
+    // check if movie is already in database by ID
     const databaseData = await Movie.findByPk(id);
-    if (databaseData) {
+    if (databaseData) { // if it is...
       // return the values
       const data = databaseData.get({ plain: true });
-      res.render('movie', { movie: data });
-    } else {
+      res.render('movie', { movie: data }); // and render the movie page with database data
+    } else { // if not
+      // request the information from the api
       const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
       try {
+        // then create a new movie entry in the database
+        // this will limit the amount of api requests
         const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
         const movie = await newMovie.get({ plain: true });
         if (movie) {
-        // and return the values
+        // pass the newMovie data into the template renderer
           res.render('movie', { movie: movie });
         } else {
           res.status(404).json('movie not found');

@@ -2,7 +2,9 @@
   <div class="row">
     <div class="poster-container col-4">
       <div class="postercard-body">
-        <img src="{{Poster}}" />
+        {{#if (isNotNA Poster)}}
+        <img src="{{Poster}}">
+        {{/if}}
       </div>
       <div class="poster-footer">
         <a href="#"></a>
