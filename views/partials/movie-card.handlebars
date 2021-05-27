@@ -2,7 +2,9 @@
   <div class="row">
     <div class="poster-container col-4">
       <div class="postercard-body">
-        <img src="{{Poster}}" />
+        {{#if (isNotNA Poster)}}
+        <img src="{{Poster}}">
+        {{/if}}
       </div>
       <div class="poster-footer">
         <a href="#"></a>
@@ -13,21 +15,19 @@
         <div class="card-header">
           <div class="card-title row row-col-2">
             <a href="/search/id/{{imdbID}}">{{Title}}</a>
-            <a href="##">
-              <form id="user-rating-form">
-                <span class="user-rating">
-                  <input type="radio" name="rating" value="5"><span class="star"></span>
+            <form id="user-rating-form">
+              <span class="user-rating">
+                <input type="radio" name="rating" value="5"><span class="star"></span>
 
-                  <input type="radio" name="rating" value="4"><span class="star"></span>
+                <input type="radio" name="rating" value="4"><span class="star"></span>
 
-                  <input type="radio" name="rating" value="3"><span class="star"></span>
+                <input type="radio" name="rating" value="3"><span class="star"></span>
 
-                  <input type="radio" name="rating" value="2"><span class="star"></span>
+                <input type="radio" name="rating" value="2"><span class="star"></span>
 
-                  <input type="radio" name="rating" value="1"><span class="star"></span>
-                </span>
-              </form>
-            </a>
+                <input type="radio" name="rating" value="1"><span class="star"></span>
+              </span>
+            </form>
           </div>
           <div class="card-subtitle">
             {{Year}}
