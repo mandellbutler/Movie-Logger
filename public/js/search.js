@@ -2,7 +2,7 @@ const searchHandler = async (e) => {
   e.preventDefault();
   const search = document.querySelector('.input-search').value.trim();
   if (search) {
-    document.location.replace(`/omdb/search?q=${search}`);
+    document.location.replace(`/search/${search}`);
   }
 };
 
