@@ -7,7 +7,7 @@ require('dotenv').config();
 const apiKey = process.env.OMDB_APIKEY;
 
 // search by movie imdbID
-router.get('/search/id/:id', async (req, res) => {
+router.get('/id/:id', async (req, res) => {
   const imdbID = 'tt0126029';
   const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${imdbID}`;
   try {
@@ -20,7 +20,7 @@ router.get('/search/id/:id', async (req, res) => {
 });
 
 // search by title
-router.get('/search/:search', async (req, res) => {
+router.get('/:search', async (req, res) => {
   const search = await req.params.search;
   const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}&type=movie`;
   try {
@@ -32,7 +32,7 @@ router.get('/search/:search', async (req, res) => {
   }
 });
 
-router.get('/search/id/:id', async (req, res) => {
+router.get('api/id/:id', async (req, res) => {
   // search by title
   const search = req.query.id;
   const baseSearchByTitleUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
@@ -65,15 +65,3 @@ router.get('/search/id/:id', async (req, res) => {
 });
 
 module.exports = router;
-
-// const apiKey = process.env.OMDB_APIKEY
-// const search = 'shawshank'
-// const baseSearchUrl = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`
-// const getMovieData = async () => {
-//   const { data } = await axios.get(baseSearchUrl)
-//   const { Title, Year, imdbID, Poster } = data.Search[0]
-//   console.log(Title)
-//   console.log(Year)
-//   console.log(imdbID)
-//   console.log(Poster)
-// }
