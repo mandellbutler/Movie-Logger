@@ -9,3 +9,4 @@ node_modules
 ._shawshank.jpeg
 ._toy.jpeg
 .env
+package-lock.json
