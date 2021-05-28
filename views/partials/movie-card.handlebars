@@ -3,23 +3,20 @@
     <div class="card col col-12 border-0">
       <div class="card-body">
         <div class="row">
-          <div class="col col-12 col-lg-2 col-sm-12 col-md-2">
+          <div class="col col-3 col-lg-1 col-sm-2 col-md-2">
             {{#if (isNotNA Poster)}}
               <a class="card-title" href="/search/id/{{imdbID}}">
                 <img class="poster" src="{{Poster}}" />
               </a>
             {{/if}}
           </div>
-          <div class="col col-12 col-lg-10 col-sm-12 col-md-10">
-            <div class="card-header">
+          <div class="col col-9 col-lg-11 col-sm-10 col-md-10">
+            <div class="card-header border-0">
               <a class="card-title" href="/search/id/{{imdbID}}"><h3
                 >{{Title}}</h3></a>
               <div class="card-subtitle">
-                {{Year}}
+                <h4>{{Year}}</h4>
               </div>
-              <p>
-                {{Plot}}
-              </p>
             </div>
           </div>
         </div>
