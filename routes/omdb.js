@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
-const { Movie } = require('../models');
+const { Movie, Rating } = require('../models');
 const { getAndCreateMovieData } = require('../utils/routeHelpers');
 require('dotenv').config();
 
@@ -28,11 +28,15 @@ router.get('/id/:id', async (req, res) => {
   try {
     // check if movie is already in database by ID
     const databaseData = await Movie.findByPk(id);
-    if (databaseData) { // if it is...
+    if (databaseData) {
+      // if it is...
+      // then it probably has a rating
       // return the values
       const data = databaseData.get({ plain: true });
+      console.log(data);
       res.render('movie', { movie: data }); // and render the movie page with database data
-    } else { // if not
+    } else {
+      // if not
       // request the information from the api
       const baseSearchByIdUrl = `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
       try {
@@ -41,7 +45,7 @@ router.get('/id/:id', async (req, res) => {
         const newMovie = await getAndCreateMovieData(baseSearchByIdUrl);
         const movie = await newMovie.get({ plain: true });
         if (movie) {
-        // pass the newMovie data into the template renderer
+          // pass the newMovie data into the template renderer
           res.render('movie', { movie: movie, loggedIn: req.session.loggedIn });
         } else {
           res.status(404).json('movie not found');
