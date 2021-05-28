@@ -97,3 +97,9 @@ body {
 .swiper-pagination {
   color: purple;
 }
+
+.header-override {
+  color: #510b8a;
+  font-family: 'Limelight', cursive;
+  background-color: #ffd100;
+}
