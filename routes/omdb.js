@@ -33,7 +33,6 @@ router.get('/id/:id', async (req, res) => {
       // then it probably has a rating
       // return the values
       const data = databaseData.get({ plain: true });
-      console.log(data);
       res.render('movie', { movie: data }); // and render the movie page with database data
     } else {
       // if not
