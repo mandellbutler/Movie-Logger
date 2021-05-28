@@ -8,3 +8,4 @@ node_modules
 ._pulp.jpeg
 ._shawshank.jpeg
 ._toy.jpeg
+.env

@@ -92,6 +92,8 @@ body {
   width: 100%;
 }
 
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next, 
+.swiper-button-prev,
+.swiper-pagination {
   color: purple;
 }
