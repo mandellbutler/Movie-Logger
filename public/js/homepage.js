@@ -2,12 +2,12 @@ window.addEventListener ('DOMContentLoaded', () => {
   console.log('Hello World');
 });
 
-var swiper = new Swiper(".mySwiper", {
-  effect: "coverflow",
+var swiper = new Swiper('.mySwiper', {
+  effect: 'coverflow',
   grabCursor: true,
   centeredSlides: true,
   loop: true,
-  slidesPerView: "auto",
+  slidesPerView: 'auto',
   coverflowEffect: {
     rotate: 50,
     stretch: 0,
@@ -20,7 +20,7 @@ var swiper = new Swiper(".mySwiper", {
     disableOnInteraction: false,
   },
   pagination: {
-    el: ".swiper-pagination",
+    el: '.swiper-pagination',
   },
   navigation: {
     nextEl: '.swiper-button-next',
