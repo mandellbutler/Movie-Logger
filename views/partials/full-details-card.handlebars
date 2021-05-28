@@ -1,7 +1,9 @@
 <div class="card border-0 rounded-0">
   <div class="card-header border-0">
     <div class="card-title">
-      <a href="/search/id/{{id}}"><h3>{{movie_title}}</h3></a>
+      <a href="/search/id/{{id}}">
+        <h3>{{movie_title}}</h3>
+      </a>
     </div>
     <div class="card-subtitle">
       <h4>{{getDate release_date}}</h4>
@@ -11,40 +13,15 @@
         <span class="">Rate It</span>
 
         <span class="user-rating px-3 py-0">
-          <input
-            class="rating-selection"
-            type="radio"
-            name="rating"
-            value="5"
-          /><span class="star"></span>
+          <input class="rating-selection" type="radio" name="rating" value="5" /><span class="star"></span>
 
-          <input
-            class="rating-selection"
-            type="radio"
-            name="rating"
-            value="4"
-          /><span class="star"></span>
+          <input class="rating-selection" type="radio" name="rating" value="4" /><span class="star"></span>
 
-          <input
-            class="rating-selection"
-            type="radio"
-            name="rating"
-            value="3"
-          /><span class="star"></span>
+          <input class="rating-selection" type="radio" name="rating" value="3" /><span class="star"></span>
 
-          <input
-            class="rating-selection"
-            type="radio"
-            name="rating"
-            value="2"
-          /><span class="star"></span>
+          <input class="rating-selection" type="radio" name="rating" value="2" /><span class="star"></span>
 
-          <input
-            class="rating-selection"
-            type="radio"
-            name="rating"
-            value="1"
-          /><span class="star"></span>
+          <input class="rating-selection" type="radio" name="rating" value="1" /><span class="star"></span>
         </span>
       </form>
     </div>
@@ -52,7 +29,7 @@
   <div class="card-body row">
     <div class="col col-12 col-md-6 col-lg-3">
       {{#if movie_poster}}
-        <img class="poster" src="{{movie_poster}}" />
+      <img class="poster" src="{{movie_poster}}" />
       {{/if}}
     </div>
     <div class="col col-12 col-md-6 col-lg-9">
