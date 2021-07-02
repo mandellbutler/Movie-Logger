@@ -23,6 +23,9 @@ Upcoming features include:
 2. npm i
 3. Create associated mysql database
 
+## Link to Deployed Application
+https://movie-logger2021.herokuapp.com/
+
 # Technologies
 This application was made possible with the use of the follow dev tools:
 * Node.js
