@@ -1,4 +1,4 @@
-window.addEventListener ('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   console.log('Hello World');
 });
 
