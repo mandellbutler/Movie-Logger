@@ -1,7 +1,8 @@
-window.addEventListener ('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   console.log('Hello World');
 });
 
+// eslint-disable-next-line no-unused-vars
 var swiper = new Swiper('.mySwiper', {
   effect: 'coverflow',
   grabCursor: true,
