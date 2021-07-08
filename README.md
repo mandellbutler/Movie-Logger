@@ -4,6 +4,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Technologies](#technologies)
+- [Contributors](#contributors)
 
 # Description
 
@@ -17,11 +18,17 @@ Upcoming features include:
 4. Monetize the site by accepting sponsorships and using affiliate links to purchase movie merchandise including home media. 
 
 
+![Search Feature](public/assets/gifs/search.gif)
+
+
 # Installation
 
 1. Clone repo.
 2. npm i
 3. Create associated mysql database
+
+## Link to Deployed Application
+https://movie-logger2021.herokuapp.com/
 
 # Technologies
 This application was made possible with the use of the follow dev tools:
@@ -33,3 +40,9 @@ This application was made possible with the use of the follow dev tools:
 * Dotenv
 * JawsDb
 * Axios
+
+# Contributors
+<a href="https://github.com/StephenSaylor"><img src="https://github.com/StephenSaylor.png?size=30"></a>
+<a href="https://github.com/jlamonade"><img src="https://github.com/jlamonade.png?size=60"></a>
+<a href="https://github.com/mandellbutler"><img src="https://github.com/mandellbutler.png?size=60"></a>
+
