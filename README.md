@@ -4,6 +4,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Technologies](#technologies)
+- [Contributors](#contributors)
 
 # Description
 
@@ -15,6 +16,9 @@ Upcoming features include:
 2. Allow users to record the status of the movie as "watched", "watching", or "dropped".
 3. Recommendation system that collects user preferences and suggests movies between users that have similar tastes.
 4. Monetize the site by accepting sponsorships and using affiliate links to purchase movie merchandise including home media. 
+
+
+![Search Feature](public/assets/gif/search.gif)
 
 
 # Installation
@@ -33,3 +37,8 @@ This application was made possible with the use of the follow dev tools:
 * Dotenv
 * JawsDb
 * Axios
+
+# Contributors
+<a href="https://github.com/StephenSaylor"><img src="https://github.com/StephenSaylor.png?size=50"></a>
+<a href="https://github.com/jlamonade"><img src="https://github.com/jlamonade.png?size=50"></a>
+<a href="https://github.com/mandellbutler"><img src="https://github.com/mandellbutler.png?size=50"></a>
