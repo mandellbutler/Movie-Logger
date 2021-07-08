@@ -27,6 +27,9 @@ Upcoming features include:
 2. npm i
 3. Create associated mysql database
 
+## Link to Deployed Application
+https://movie-logger2021.herokuapp.com/
+
 # Technologies
 This application was made possible with the use of the follow dev tools:
 * Node.js
@@ -42,3 +45,4 @@ This application was made possible with the use of the follow dev tools:
 <a href="https://github.com/StephenSaylor"><img src="https://github.com/StephenSaylor.png?size=50"></a>
 <a href="https://github.com/jlamonade"><img src="https://github.com/jlamonade.png?size=50"></a>
 <a href="https://github.com/mandellbutler"><img src="https://github.com/mandellbutler.png?size=50"></a>
+
