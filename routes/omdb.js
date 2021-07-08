@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
-const { Movie, Rating } = require('../models');
+const { Movie } = require('../models');
 const { getAndCreateMovieData } = require('../utils/routeHelpers');
 require('dotenv').config();
 
